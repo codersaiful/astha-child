@@ -67,7 +67,7 @@ if ( !function_exists( 'astha_child_footer_socket_menu_reg' ) ):
     function astha_child_footer_socket_menu_reg(){
             register_nav_menus(
                 array(
-                        'footer-socket-menu' => esc_html__( 'Footer Socket Menu', 'medilac' ),
+                        'footer-socket-menu' => esc_html__( 'Footer Socket Menu', 'astha' ),
                 )
             );
     }
@@ -88,3 +88,40 @@ if ( !function_exists( 'astha_child_social_links_anywhere' ) ):
     }
 endif;
 add_shortcode( 'astha_social_links', 'astha_child_social_links_anywhere' );
+
+
+if ( !function_exists( 'astha_child_header_custom_top_reg' ) ):
+    
+    /**
+     * Register Custom Topbar
+     * 
+     * @since 1.0.2.0
+     */
+    function astha_child_header_custom_top_reg(){
+        register_sidebar(
+		array(
+			'name'          => esc_html__( 'Custom Topbar', 'astha' ),
+			'id'            => 'custom-topbar',
+			'description'   => esc_html__( 'Add widgets here.', 'astha' ),
+			'before_widget' => '<section id="%1$s" class="widget widget-general %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+ 	);
+    }
+endif;
+//add_action( 'after_setup_theme', 'astha_child_header_custom_top_reg', 999 );
+
+if ( ! function_exists( 'astha_child_header_custom_top' ) ):
+    /**
+     * Displaying custom Topbar
+     */
+    function astha_child_header_custom_top(){
+	//if( get_the_id() != 3091 ) return;
+		
+        dynamic_sidebar( 'custom-topbar' );
+    }
+endif;
+
+//add_action( 'astha_before_header', 'astha_child_header_custom_top' );
