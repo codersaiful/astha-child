@@ -84,7 +84,7 @@ if ( !function_exists( 'astha_child_social_links_anywhere' ) ):
      */
     function astha_child_social_links_anywhere(){
         $social_network = astha_option( 'astha_social' );
-	astha_social_links( $social_network );
+	return astha_social_links( $social_network, false );
     }
 endif;
 add_shortcode( 'astha_social_links', 'astha_child_social_links_anywhere' );
