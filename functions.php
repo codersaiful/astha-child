@@ -120,8 +120,12 @@ if ( ! function_exists( 'astha_child_header_custom_top' ) ):
     function astha_child_header_custom_top(){
 	//if( get_the_id() != 3091 ) return;
 		
-        dynamic_sidebar( 'custom-topbar' );
+        ?>
+        <div class="custom-topbar astha-custom-topbar">
+                <?php dynamic_sidebar( 'custom-topbar' ); ?>
+        </div>
+        <?php
     }
 endif;
 
-//add_action( 'astha_before_header', 'astha_child_header_custom_top' );
+//add_action( 'astha_header_top', 'astha_child_header_custom_top' );
